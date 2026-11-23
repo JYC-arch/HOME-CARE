@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#365f87">
+  <meta name="description" content="各國居家護理制度比較：七組選國家、研究共同個案、在線填寫並下載小組成果。">
+  <title>各國居家護理制度比較｜小組填寫</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="activity.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+<a class="skip" href="#workspace">跳到小組填寫</a>
+<header class="site-header"><a class="brand" href="#">社區護理 <span>/</span> 居家照護</a><a class="header-link" href="https://github.com/JYC-arch/HOME-CARE" target="_blank" rel="noopener noreferrer">活動文件</a></header>
+<main>
+  <section class="hero">
+    <p class="eyebrow">HOME CARE AROUND THE WORLD</p>
+    <h1>同一位林奶奶，<br>在不同國家，<span>會怎麼被照顧？</span></h1>
+    <p class="intro">從申請、分工到費用，探索各國的居家護理與長期照顧，<br class="desktop">再回到台灣，提出有依據的比較。</p>
+    <a class="primary start-link" href="#workspace">開始小組填寫</a>
+  </section>
+  <section class="case" aria-labelledby="caseTitle">
+    <div><p class="eyebrow">共同個案 · 教學虛構情境</p><h2 id="caseTitle">林奶奶，82 歲，獨居。</h2></div>
+    <div><p>中風後左側肢體無力，<strong>需他人協助移位</strong>。薦骨有<strong>第二級壓力性損傷</strong>，留置導尿管。女兒白天上班，只能晚上探視。</p><p class="case-question">如果林奶奶住在你們研究的國家，她會怎麼取得居家護理與照顧服務？</p></div>
+  </section>
+
+  <section id="workspace" aria-labelledby="workspaceTitle">
+    <div class="section-head"><div><p class="eyebrow">小組工作區</p><h2 id="workspaceTitle">選擇組別與國家</h2></div><p>每組由一台裝置填寫即可</p></div>
+    <div id="groupPicker" class="group-grid" aria-label="選擇組別"></div>
+    <noscript><p>請啟用瀏覽器 JavaScript，才能使用填寫、預覽與下載功能。</p></noscript>
+    <div id="workArea" hidden>
+      <div class="work-layout">
+        <aside class="guide">
+          <p id="groupLabel" class="eyebrow"></p><h2 id="countryTitle"></h2><p id="countryFocus"></p>
+          <h3>查詢起點</h3><a id="officialLink" target="_blank" rel="noopener noreferrer"></a>
+          <nav class="step-nav" aria-label="討論步驟"><a href="#step1">誰來評估</a><a href="#step2">誰來照護</a><a href="#step3">誰付錢</a><a href="#step4">特色服務</a><a href="#step5">與台灣比較</a><a href="#sourcesSection">資料來源</a></nav>
+          <p class="guide-note">先說明制度，再套用林奶奶的情境。資料不足就明確指出，不必勉強下結論。</p>
+        </aside>
+        <div class="editor">
+          <div class="save-bar"><span id="saveStatus" role="status">尚未填寫</span><span id="progressText"></span></div>
+          <progress id="progress" max="11" value="0" aria-label="必填欄位進度"></progress>
+          <form id="activityForm" novalidate>
+            <section class="form-section metadata"><h2>小組資料</h2><div class="two-columns"><label>班級（選填）<input id="className" maxlength="100" autocomplete="off" placeholder="班級或課程名稱"></label><label>組員（選填）<input id="members" maxlength="300" autocomplete="off" placeholder="依教師要求填寫"></label></div></section>
+            <div id="questionFields"></div>
+            <section id="sourcesSection" class="form-section" aria-labelledby="sourcesTitle"><p class="eyebrow">支持你們的判斷</p><h2 id="sourcesTitle">資料來源</h2><p class="hint">至少列一個政府或官方網站，填寫網址與查詢日期。請區分已上路、試辦及規劃中的政策。</p><div id="sourceRows"></div><button type="button" id="addSource" class="secondary">新增資料來源</button></section>
+            <p id="formError" class="error" role="alert"></p>
+            <button type="submit" class="primary wide">完成討論，產生本組成果</button>
+          </form>
+          <p class="storage-note">草稿只儲存在目前裝置的瀏覽器，不會自動傳給教師或其他組。完成後請下載成果，依教師指定的管道繳交。</p>
+          <div class="draft-actions"><button id="exportDraft" type="button" class="text-button">下載草稿備份</button><label class="file-label">匯入草稿或成果<input id="importFile" type="file" accept=".json,application/json"></label></div>
+          <p id="importStatus" role="status" class="hint"></p>
+          <details class="live-preview"><summary>查看本組即時預覽</summary><div id="livePreview"></div></details>
+        </div>
+      </div>
+      <section id="result" class="result" hidden tabindex="-1" aria-labelledby="resultTitle"><p class="eyebrow">小組討論成果</p><h2 id="resultTitle"></h2><p id="resultMeta" class="hint"></p><div id="resultContent"></div><div class="handoff"><h3>下載後，再依教師指定的管道繳交</h3><p>產生成果不等於已繳交。本頁不會自動上傳，也不會公開其他組答案。</p></div><div class="actions"><button id="downloadJson" class="primary">下載成果檔 JSON</button><button id="downloadText" class="secondary">下載文字紀錄</button><button id="printResult" class="secondary">列印或存成 PDF</button><button id="editResult" class="text-button">回到填寫內容</button></div></section>
+    </div>
+  </section>
+  <details class="learning-goals"><summary>本次活動的學習目標</summary><ol><li>說明不同國家居家護理與長期照顧制度的財源、評估、服務提供與特色。</li><li>將各國制度套用於同一個案，分析照護流程的差異。</li><li>比較台灣與他國做法，提出可借鏡之處及台灣值得保留的做法，並說明理由。</li></ol></details>
+</main>
+<footer><span>各國居家護理制度比較 · 學生小組活動</span><span>政策有年份，比較有依據。</span></footer>
+</body>
+</html>
